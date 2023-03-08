@@ -43,18 +43,19 @@ function App() {
   return (
     <div className="App">
       <BackgroundComponent/>
+
+      {
+          isEditing&&(<EditForm
+                    editedTask={editedTask}
+                    updateTask={updateTask}
+                    />)
+        }
       <div className="app-container">
 
         <div className="label-div">
           <h1 className="logo">TODO</h1>
           <img src={currentTheme} alt="theme-icon" className="teme-image" />
         </div>
-        {
-          isEditing&&(<EditForm
-                    editedTask={editedTask}
-                    updateTask={updateTask}
-                    />)
-        }
 
         <TaskForm addTask={addTask}/>
         <div className="tasks-container">
