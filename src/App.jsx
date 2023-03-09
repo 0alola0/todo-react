@@ -3,10 +3,11 @@ import BackgroundComponent from './components/BackgroundComponent'
 import EditForm from './components/EditForm'
 import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
+import useLocalStorage from './hooks/useLocalStorage'
 
 function App() {
   //ვქმით ტასკების ერეის სთეითს, სადაც თასქები ერეია ხოლო setTasks ფუქცია რომელიც მას ააფდეითებს
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useLocalStorage('todo.tasks', [])
   const [editedTask, setEditedTask] = useState(null)
   const [isEditing, setIsEditing] = useState(false)
 
@@ -45,11 +46,12 @@ function App() {
       <BackgroundComponent/>
 
       {
-          isEditing&&(<EditForm
-                    editedTask={editedTask}
-                    updateTask={updateTask}
-                    />)
-        }
+        isEditing&&(<EditForm
+                  editedTask={editedTask}
+                  updateTask={updateTask}
+                  closeEdit={closeEdit}
+                  />)
+      }
       <div className="app-container">
 
         <div className="label-div">

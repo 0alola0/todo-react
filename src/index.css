@@ -38,7 +38,16 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(1px) saturate(30%) brightness(100%);
+  backdrop-filter: blur(3px) saturate(30%) brightness(100%);
+  flex-direction: column;
+}
+.close-edit{
+  color: var(--meek-p);
+  font-weight: lighter;
+}
+.editor{
+  border: var(--border);
+  box-shadow: var(--box-shadow);
 }
 
 .custom-checkbox {
