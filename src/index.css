@@ -5,7 +5,6 @@
   --dark-p: #9495A5;
   --meek-p: #494C6B;
   --bg-image: url("./assets/bg-desktop-light.jpg");
-  --toggle-image:  url("./images/icon-moon.svg");
   --box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
   --border: 1px solid #e3e4f1;
   --underline: 1px solid #E3E4F1;
@@ -16,7 +15,6 @@
   --dark-p: #ffffff;
   --meek-p: #a8aac1;
   --bg-image: url("./assets/bg-desktop-dark.jpg");
-  --toggle-image:  url("./images/icon-sun.svg");
   --box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
   --border: 1px solid #65666e;
   --underline: 1px solid  #393A4B;
@@ -30,6 +28,13 @@ body{
 
 *{
   font-family: 'Josefin Sans', sans-serif;
+}
+.app-background{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: -1;
+  background-color: var(--bg-color);
 }
 .update-wrapper{
   position: absolute;
@@ -58,12 +63,20 @@ body{
   border: var(--border);
   border-radius: 50%;
 }
-.checked-task{
-  background-image: url("./images/icon-check.svg"),
-  linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
+.custom-checkbox:hover{
+  animation: animateBg 2s linear infinite;
+  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+  background-size: 500% 100%
+}
+.checked{
+  width: 26px;
+  height: 26px;
+  color: white;
+  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
 }
 .submit-task{
   width: 26px;
@@ -75,9 +88,16 @@ body{
   font-size: 20px;
   padding: 0px;
   margin: 0px;
-  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 50%);
-  background-size: 240% 240%;
-  
+  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+}
+.submit-task:hover{
+  animation: animateBg 2s linear infinite;
+  background-size: 500% 100%
+}
+@keyframes animateBg {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+  100% { background-position: 0% 0%; }
 }
 @keyframes spin{
 from{transform:rotate(0deg)}
@@ -88,6 +108,7 @@ to{transform:rotate(360deg)}
 }
 .hover-effect:hover{
   color: #3A7CFD;
+  cursor: pointer;
 }
 .hover-effect:focus{
   color: #9495A5;
@@ -107,6 +128,9 @@ to{transform:rotate(360deg)}
   visibility: hidden;
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  color: var(--meek-p);
+
 }
 .task:hover .delete-single{
   visibility: visible;
@@ -137,7 +161,6 @@ to{transform:rotate(360deg)}
 .theme-image{
   width: 26px;
   height: 26px;
-  content: var(--toggle-image);
 }
 form{
   width: 492px;
@@ -284,5 +307,8 @@ form{
   .hint{
       display: none;
   }
-  
+  .delete-single{
+    visibility: visible;
+    color: var(--meek-p);
+  }
 }
