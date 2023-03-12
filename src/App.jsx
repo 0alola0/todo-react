@@ -47,12 +47,14 @@ function App() {
   }
 
   useEffect(() => {
-    let temporaryTaskAmount = tasks.filter(t => !t.checked)
-    setTaskAmount(temporaryTaskAmount.length)
+    const clone = tasks.slice()
+    let temporaryLength = clone.filter(t => !t.checked).length
+    setTaskAmount(temporaryLength)
   }, [tasks]);
 
   const deleteTask = (id) => {
-    let temporaryTasks = tasks.filter(t => t.id !== id)
+    let clone = tasks.slice()
+    let temporaryTasks = clone.filter(t => t.id !== id)
     setTasks(temporaryTasks)
   }
   const deleteComplete = () => {
@@ -108,7 +110,7 @@ function App() {
         <TaskForm addTask={addTask}/>
         <div className="tasks-container">
           {/* პირველ რიგში უნდა შევამოწმოთ გვაქვს თუ არა თასქები და მხოლოდ შემდეგ დავამატოთ ისინი დომში, ამისთვის ვიყენებთ && ოპერატორს. შემდეგ კი უნდა გავატანოთ ჩვენი თასქები პროფსებად  რომ პირდაპირ მათ სთეითთან ჰქონდეთ წვდომა*/}
-          {tasks && <TaskList
+          {tasks? <TaskList
            tasks={tasks}
            deleteTask={deleteTask}
            enterEdit={enterEdit}
@@ -118,13 +120,16 @@ function App() {
            dragEnter = {dragEnter}
            drop = {drop}
           
-          />}  
+          /> : ""}  
         </div>
 
         {
           currentScreen > 650? <StatusContainerDesktop taskAmount={taskAmount} handleFilterClick={handleFilterClick} deleteComplete={deleteComplete} /> : <StatusContainerMobile taskAmount={taskAmount} handleFilterClick={handleFilterClick} deleteComplete={deleteComplete}/>
         }
 
+        <div class="hint">
+          <h4>hint: you can drag tasks to reorder</h4>
+        </div>
 
       </div>
     </div>

@@ -8,6 +8,8 @@
   --box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
   --border: 1px solid #e3e4f1;
   --underline: 1px solid #E3E4F1;
+  --hover-color: #3A7CFD;
+  --crossed-out: #D1D2DA;
 }
 .dark-mode{
   --bg-color: #181824;
@@ -18,6 +20,8 @@
   --box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
   --border: 1px solid #65666e;
   --underline: 1px solid  #393A4B;
+  --crossed-out: #4D5067;
+  --hover-color: white;
 }
 
 body{
@@ -107,7 +111,7 @@ to{transform:rotate(360deg)}
   outline: none;
 }
 .hover-effect:hover{
-  color: #3A7CFD;
+  color: var(--hover-color);
   cursor: pointer;
 }
 .hover-effect:focus{
@@ -115,7 +119,7 @@ to{transform:rotate(360deg)}
 }
 .crossed{
   text-decoration: line-through;
-  color: var(--dark-p) !;
+  color: var(--crossed-out) !important;
 }
 .label-container{
   width: 100%;

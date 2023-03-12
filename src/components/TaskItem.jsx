@@ -19,7 +19,7 @@ const TaskItem = ({task, toggleCheckmark, deleteTask, enterEdit, dragStart, drag
     draggable="true"
     >
         <input checked={isChecked} type="checkbox" className={isChecked? "completor checked" : "completor"}  onChange={handleCheckox}/>
-        <label htmlFor={task.id} className="label-container"><span className={isChecked? "custom-checkbox checked" : "custom-checkbox"} onClick={handleCheckox}>{isChecked&&<CheckIcon width={15} height={15}  strokeWidth={3.00}/>}</span>{task.name}</label>
+        <label htmlFor={task.id} className={isChecked? "label-container crossed" : "label-container"}><span className={isChecked? "custom-checkbox checked" : "custom-checkbox"} onClick={handleCheckox}>{isChecked&&<CheckIcon width={15} height={15}  strokeWidth={3.00}/>}</span>{task.name}</label>
         <button className="delete-single" onClick={() => enterEdit(task)}>
             <PencilSquareIcon  width={26} height={26}/>
         </button>
